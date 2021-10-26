@@ -13,10 +13,10 @@ let regForm = id(document, '#registerForm'),
 
 regForm.addEventListener('submit', event1 => {
     event1.preventDefault();
-    let username = id(regForm, "#username"),
-        name = id(regForm, "name"),
-        email = id(regForm, "#email"),
-        password = id(regForm, "#password");
+    let username = id(regForm, "#username").value,
+        name = id(regForm, "#name").value,
+        email = id(regForm, "#email").value,
+        password = id(regForm, "#pwd").value;
 
     let userNew = new User(name, username, email, password);
     console.log("esiste nello storage?:" , userNew.existsInStorage() )
