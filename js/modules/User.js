@@ -29,15 +29,10 @@ export class User {
         arr[index];
         localStorage.setItem('users', JSON.stringify(arr));
     };
-    existsInStorage() {
-        let arr = JSON.parse(localStorage.getItem('users')) || [];
-        let check = false;
-        arr.forEach((element) => {
-            if (element.usrNm === this.usrNm || element.eMl === this.eMl ) {
-                check = true;
-            }
-        })
-        return check;
-    };
 
+};
+
+export function getUser(index){
+    let arr = JSON.parse(localStorage.getItem('users'));
+    return arr[index];
 }

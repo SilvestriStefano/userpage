@@ -25,7 +25,6 @@ div {
 
 body {
     font-family: sans-serif;
-    background-image: linear-gradient(var(--clr-primary), var(--clr-secondary));
 }
 
 nav {
@@ -34,17 +33,23 @@ nav {
     font-size: 1.5rem;
 }
 
-header,
-main {
-    width: 90%;
-    margin: 0 auto;
-}
 
 main {
+    min-height:100vh;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-around;
+    background-image: linear-gradient(var(--clr-primary), var(--clr-secondary));
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hidden{
+    display:none;
 }
 
 /*================
@@ -83,13 +88,13 @@ input:required+span::after{
 
 .form-box .user-box input {
     width: 100%;
+    outline: none;
     margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid var(--clr-txt);
     padding: 10px 0;
     font-size: 16px;
     color: var(--clr-txt);
-    outline: none;
     background: transparent;
 }
 
@@ -111,7 +116,7 @@ input:required+span::after{
     font-size: 12px;
 }
 
-input[type="submit"] {
+input[type="submit"],input[type="button"] {
     -webkit-appearance: none;
     appearance: none;
     margin:0;
@@ -136,6 +141,7 @@ input[type="submit"] {
     overflow: hidden;
     transition: 1s;
     letter-spacing: 4px;
+    cursor:pointer;
 }
 
 .submit:hover {
@@ -232,4 +238,8 @@ input[type="submit"] {
     100% {
         bottom: 100%;
     }
+}
+
+.wrong{
+    outline: 2px dashed red!important;
 }

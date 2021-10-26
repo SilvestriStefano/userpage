@@ -15,9 +15,6 @@
 </head>
 
 <body>
-    <nav>
-        <div class="logged-in"></div>
-    </nav>
     <main>
         <div class="form-box">
             <form id="registerForm">
@@ -53,19 +50,29 @@
                         <input type="password" id="confirm-pwd" placeholder="Confirm your password" required />
                         <span></span>
                     </div>
-                    <div class="coolbtn">
-                        <input type="submit" class="submit" value="Sign Up" />
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <div class="container">
+                        <div class="coolbtn">
+                            <input type="submit" class="submit" value="Sign Up" />
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="coolbtn">
+                            <input type="button" class="submit" value="Sign In" />
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
                     </div>
             </form>
 
         </div>
-        <div class="form-box">
+        <div class="form-box hidden">
             <h2>Login</h2>
             <form id="loginForm">
+                <div class="wrong hidden" id="error">Login failed</div>
                 <div class="user-box">
                     <input type="text" name="" required="">
                     <label>Username</label>
@@ -74,18 +81,69 @@
                     <input type="password" name="" required="">
                     <label>Password</label>
                 </div>
-                <div class="coolbtn">
-                    <input type="submit" class="submit" value="Submit" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                
+                <div class="container">
+                    <div class="coolbtn">
+                        <input type="submit" class="submit" value="Submit" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="coolbtn">
+                        <input type="button" class="submit" value="Sign Up" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </form>
         </div>
+        <div class="form-box hidden">
+            <form id="updateForm">
+                <h2>Update</h2>
+                    <div class="user-box">
+                        <input type="text" id="updateName" placeholder="Enter your name" />
+                        <span></span>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" id="updateLastname" placeholder="Enter your last name" />
+                    </div>
+                    <div class="user-box">
+                        <p>Date of birth</p>
+                        <input type="date" id="updateDob" />
+                    </div>
+                    <div class="user-box">
+                        <input type="tel" id="updatePhone" />
+                        <label>Phone number</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="text" id="updateUsername" placeholder="Choose a user name" />
+                        <span></span>
+                    </div>
+                    <div class="user-box">
+                        <input type="email" id="updateEmail" placeholder="Enter your email" />
+                        <span></span>
+                    </div>
+                    <div class="container">
+                        <div class="coolbtn">
+                            <input type="submit" class="submit" value="Update" />
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="coolbtn">
+                            <input type="button" class="submit" value="Log Out" />
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+            </form>
     </main>
-    <footer>
-    </footer>
 
     <script type="module" src="./js/script.js"></script>
 </body>
