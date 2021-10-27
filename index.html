@@ -72,10 +72,9 @@
         <div class="form-box hidden">
             <h2>Login</h2>
             <form id="loginForm">
-                <div class="wrong hidden" id="error">Login failed</div>
                 <div class="user-box">
                     <input type="text" name="" required="">
-                    <label>Username</label>
+                    <label>Username or Email</label>
                 </div>
                 <div class="user-box">
                     <input type="password" name="" required="">
@@ -128,14 +127,14 @@
                     </div>
                     <div class="container">
                         <div class="coolbtn">
-                            <input type="submit" class="submit" value="Update" />
+                            <input type="submit" class="submit" name="update" value="Update" />
                             <span></span>
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
                         <div class="coolbtn">
-                            <input type="button" class="submit" value="Log Out" />
+                            <input type="button" class="submit" name="logout" value="Log Out" />
                             <span></span>
                             <span></span>
                             <span></span>
@@ -145,6 +144,7 @@
             </form>
     </main>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="./js/script.js"></script>
 </body>
 

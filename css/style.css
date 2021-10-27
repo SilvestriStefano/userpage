@@ -97,7 +97,10 @@ input:required+span::after{
     color: var(--clr-txt);
     background: transparent;
 }
-
+.form-box .user-box p{
+    color: var(--clr-accent);
+    font-size: 12px;
+}
 .form-box .user-box label {
     position: absolute;
     top: 0;
@@ -109,7 +112,14 @@ input:required+span::after{
     transition: 1s;
 }
 
-.form-box .user-box input:focus~label{
+.form-box .user-box input:focus~label,.form-box .user-box input:required:valid~label{
+    top: -20px;
+    left: 0;
+    color: var(--clr-accent);
+    font-size: 12px;
+}
+
+.form-box .user-box label.bob{
     top: -20px;
     left: 0;
     color: var(--clr-accent);
@@ -238,8 +248,4 @@ input[type="submit"],input[type="button"] {
     100% {
         bottom: 100%;
     }
-}
-
-.wrong{
-    outline: 2px dashed red!important;
 }
