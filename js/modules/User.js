@@ -1,26 +1,25 @@
 export class User {
-    constructor(nm, usrNm, eMl, pwd) {
-        this.nm = nm;
-        this.lstNm = '';
-        this.usrNm = usrNm;
-        this.eMl = eMl;
-        this.pwd = pwd;
+    constructor(name, userName, email, password) {
+        this.name = name;
+        this.lastName = '';
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
         this.dob = '';
-        this.phn = '';
+        this.phone = '';
     };
-    set updateLstNm(lstNm) {
-        this.lstNm = lstNm;
+    set updateLstNm(lastName) {
+        this.lastName = lastName;
     };
     set updateDOB(dob) {
         this.dob = dob;
     };
-    set updatePhn(phn) {
-        this.phn = phn;
+    set updatePhn(phone) {
+        this.phone = phone;
     };
     save() {
         let arr = JSON.parse(localStorage.getItem('users')) || [];
         arr.push(this);
-        console.log(arr);
         localStorage.setItem('users', JSON.stringify(arr));
     };
     
