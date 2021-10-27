@@ -8,14 +8,16 @@ import {
     wrong,
     wrongClear,
     existsInStorage
-} from "./modules/Wrong.js"
+} from "./modules/wrong.js"
 
 let id = (doc, id) => doc.querySelector(id);
-let classes = (doc, classes) => doc.querySelectorAll(classes);
 
 let regForm = id(document, '#registerForm'),
     loginForm = id(document, '#loginForm');
 
+/*============== 
+    Sign Up 
+================*/
 regForm.addEventListener('submit', event1 => {
     event1.preventDefault();
     let username = id(regForm, "#username"),
@@ -28,9 +30,9 @@ regForm.addEventListener('submit', event1 => {
 
     if (!/\S/.test(name.value)) {
         name.classList.remove('wrong');
-    } else if (existsInStorage(username.value, 'usrNm')) {
+    } else if (existsInStorage(username.value, 'userName')) {
         wrong(username, 'Username already exists');
-    } else if (existsInStorage(email.value, 'eMl')) {
+    } else if (existsInStorage(email.value, 'email')) {
         wrong(email, 'Email already exists');
     } else if (password.value != passwordtemp.value) {
         wrong(passwordtemp, 'Passwords do not match');
@@ -42,9 +44,12 @@ regForm.addEventListener('submit', event1 => {
 
         userNew.save();
     }
-
-
 })
+
+
+/*============== 
+    Sign In 
+================*/
 loginForm.addEventListener('submit', event2 => {
     event2.preventDefault();
     let username = loginForm.querySelector('input[type="text"]'),
@@ -60,20 +65,25 @@ loginForm.addEventListener('submit', event2 => {
         updateForm.parentNode.classList.toggle('hidden');
 
         let currentUser = getUser(currentIndex);
-        id(updateForm, "updateUsername").value = currentUser.usrNm;
-        id(updateForm, "updateName").value = currentUser.nm;
-        id(updateForm, "updateLastname").value = currentUser.lstNm;
-        id(updateForm, "updateEmail").value = currentUser.eMl;
-        id(updateForm, 'updateDob').value = currentUser.dob;
-        id(updateForm, 'updatePhone').value = currentUser.phn;
+        console.log(currentUser)
+        id(updateForm, "#updateUsername").value = currentUser.userName;
+        id(updateForm, "#updateName").value = currentUser.name;
+        id(updateForm, "#updateLastname").value = currentUser.lastName;
+        id(updateForm, "#updateEmail").value = currentUser.email;
+        id(updateForm, '#updateDob').value = currentUser.dob;
+        id(updateForm, '#updatePhone').value = currentUser.phone;
     }
 })
+
+
+/*============== 
+    Buttons 
+================*/
 
 let pulsanti = document.querySelectorAll('#registerForm input[type="button"],#loginForm input[type="button"]');
 pulsanti.forEach(elem => {
     elem.addEventListener('click', eve => {
         eve.preventDefault();
-        console.log(regForm.parentNode)
         regForm.parentNode.classList.toggle('hidden');
         loginForm.parentNode.classList.toggle('hidden');
     })
