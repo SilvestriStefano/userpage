@@ -19,53 +19,53 @@
         <div class="form-box">
             <form id="registerForm">
                 <h2>Register</h2>
-                    <div class="user-box">
-                        <input type="text" id="name" placeholder="Enter your name" required />
+                <div class="user-box">
+                    <input type="text" id="name" placeholder="Enter your name" required />
+                    <span></span>
+                </div>
+                <div class="user-box">
+                    <input type="text" id="lastname" placeholder="Enter your last name" />
+                </div>
+                <div class="user-box">
+                    <p>Date of birth</p>
+                    <input type="date" id="dob" />
+                </div>
+                <div class="user-box">
+                    <input type="tel" id="phone" />
+                    <label>Phone number</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" id="username" placeholder="Choose a user name" required />
+                    <span></span>
+                </div>
+                <div class="user-box">
+                    <input type="email" id="email" placeholder="Enter your email" required />
+                    <span></span>
+                </div>
+                <div class="user-box">
+                    <input type="password" id="pwd" placeholder="Create a password" required />
+                    <span></span>
+                </div>
+                <div class="user-box">
+                    <input type="password" id="confirm-pwd" placeholder="Confirm your password" required />
+                    <span></span>
+                </div>
+                <div class="container">
+                    <div class="coolbtn">
+                        <input type="submit" class="submit" value="Sign Up" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                     </div>
-                    <div class="user-box">
-                        <input type="text" id="lastname" placeholder="Enter your last name" />
-                    </div>
-                    <div class="user-box">
-                        <p>Date of birth</p>
-                        <input type="date" id="dob" />
-                    </div>
-                    <div class="user-box">
-                        <input type="tel" id="phone" />
-                        <label>Phone number</label>
-                    </div>
-                    <div class="user-box">
-                        <input type="text" id="username" placeholder="Choose a user name" required />
+                    <div class="coolbtn">
+                        <input type="button" class="submit" value="Sign In" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
                         <span></span>
                     </div>
-                    <div class="user-box">
-                        <input type="email" id="email" placeholder="Enter your email" required />
-                        <span></span>
-                    </div>
-                    <div class="user-box">
-                        <input type="password" id="pwd" placeholder="Create a password" required />
-                        <span></span>
-                    </div>
-                    <div class="user-box">
-                        <input type="password" id="confirm-pwd" placeholder="Confirm your password" required />
-                        <span></span>
-                    </div>
-                    <div class="container">
-                        <div class="coolbtn">
-                            <input type="submit" class="submit" value="Sign Up" />
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="coolbtn">
-                            <input type="button" class="submit" value="Sign In" />
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
+                </div>
             </form>
 
         </div>
@@ -80,7 +80,7 @@
                     <input type="password" name="" required="">
                     <label>Password</label>
                 </div>
-                
+
                 <div class="container">
                     <div class="coolbtn">
                         <input type="submit" class="submit" value="Submit" />
@@ -99,49 +99,6 @@
                 </div>
             </form>
         </div>
-        <div class="form-box hidden">
-            <form id="updateForm">
-                <h2>Update</h2>
-                    <div class="user-box">
-                        <input type="text" id="updateName" placeholder="Update your name" />
-                        <span></span>
-                    </div>
-                    <div class="user-box">
-                        <input type="text" id="updateLastname" placeholder="Update your last name" />
-                    </div>
-                    <div class="user-box">
-                        <p>Date of birth</p>
-                        <input type="date" id="updateDob" />
-                    </div>
-                    <div class="user-box">
-                        <input type="tel" id="updatePhone" />
-                        <label>Phone number</label>
-                    </div>
-                    <div class="user-box">
-                        <input type="text" id="updateUsername" placeholder="Update your username" />
-                        <span></span>
-                    </div>
-                    <div class="user-box">
-                        <input type="email" id="updateEmail" placeholder="Update your email" />
-                        <span></span>
-                    </div>
-                    <div class="container">
-                        <div class="coolbtn">
-                            <input type="submit" class="submit" name="update" value="Update" />
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="coolbtn">
-                            <input type="button" class="submit" name="logout" value="Log Out" />
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-            </form>
     </main>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

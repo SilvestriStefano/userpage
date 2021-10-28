@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <main>
+
+
+        <div class="form-box hidden">
+            <form id="updateForm">
+                <h2>Update</h2>
+                <div class="user-box">
+                    <input type="text" id="updateName" placeholder="Update your name" />
+                    <span></span>
+                </div>
+                <div class="user-box">
+                    <input type="text" id="updateLastname" placeholder="Update your last name" />
+                </div>
+                <div class="user-box">
+                    <p>Date of birth</p>
+                    <input type="date" id="updateDob" />
+                </div>
+                <div class="user-box">
+                    <input type="tel" id="updatePhone" />
+                    <label>Phone number</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" id="updateUsername" placeholder="Update your username" />
+                    <span></span>
+                </div>
+                <div class="user-box">
+                    <input type="email" id="updateEmail" placeholder="Update your email" />
+                    <span></span>
+                </div>
+                <div class="container">
+                    <div class="coolbtn">
+                        <input type="submit" class="submit" name="update" value="Update" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="coolbtn">
+                        <input type="button" class="submit" name="logout" value="Log Out" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id='calendar'></div>
+    </main>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.js"></script>
+    <script type="module" src="./js/profileScript.js"></script>
+</body>
+
+</html>
