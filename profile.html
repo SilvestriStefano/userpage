@@ -7,13 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
     <main>
-
+        <div class="form-box" id="welcome">
+            <div class="container">
+                <h2>Welcome</h2>
+                <a href="">Log Out</a>
+            </div>
+            <div class="user-data"></div>
+            <div class="container2">
+                <div class="coolbtn2">
+                    <input type="submit" class="submit" name="update" value="Update your info" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="coolbtn2">
+                    <input type="button" class="submit" name="calendar" value="Calendar" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
 
         <div class="form-box hidden">
             <form id="updateForm">
@@ -59,7 +82,7 @@
                 </div>
             </form>
         </div>
-        <div id='calendar'></div>
+        <div id='calendar' class="hidden"></div>
     </main>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
