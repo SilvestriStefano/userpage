@@ -60,8 +60,9 @@ regForm.addEventListener('submit', event1 => {
             email: email.value,
             password: password.value,
             dob: dob.value,
-            phone: phone.value
-        }
+            phone: phone.value,
+            events: []
+        };
         let userNew = new User(newObj);
 
         userNew.save();
