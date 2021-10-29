@@ -31,11 +31,14 @@ bob.forEach(function(inp){
 ================*/
 regForm.addEventListener('submit', event1 => {
     event1.preventDefault();
-    let username = id(regForm, "#username"),
-        name = id(regForm, "#name"),
+    let name = id(regForm, "#name"),
+        lastname = id(regForm, "#lastname"),
+        username = id(regForm, "#username"),
         email = id(regForm, "#email"),
         password = id(regForm, "#pwd"),
-        passwordtemp = id(regForm, '#confirm-pwd');
+        passwordtemp = id(regForm, '#confirm-pwd'),
+        dob = id(regForm, '#dob'),
+        phone = id(regForm, '#phone');
 
     wrongClear(regForm, 'wrong');
 
@@ -50,8 +53,16 @@ regForm.addEventListener('submit', event1 => {
     } else {
 
         wrongClear(regForm, 'wrong');
-
-        let userNew = new User(name.value, username.value, email.value, password.value);
+        let newObj = {
+            name: name.value,
+            lastName: lastname.value,
+            userName: username.value,
+            email: email.value,
+            password: password.value,
+            dob: dob.value,
+            phone: phone.value
+        }
+        let userNew = new User(newObj);
 
         userNew.save();
     }

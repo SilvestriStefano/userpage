@@ -1,12 +1,12 @@
 export class User {
-    constructor(name, userName, email, password) {
-        this.name = name;
-        this.lastName = '';
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-        this.dob = '';
-        this.phone = '';
+    constructor(userObj) {
+        this.name = userObj.name;
+        this.lastName = userObj.lastName;
+        this.userName = userObj.userName;
+        this.email = userObj.email;
+        this.password = userObj.password;
+        this.dob = userObj.dob;
+        this.phone = userObj.phone;
     };
     set updateLstNm(lastName) {
         this.lastName = lastName;
@@ -25,7 +25,7 @@ export class User {
     
     update(index) {
         let arr = JSON.parse(localStorage.getItem('users'));
-        arr[index];
+        arr[index] = this;
         localStorage.setItem('users', JSON.stringify(arr));
     };
 
