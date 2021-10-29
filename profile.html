@@ -23,17 +23,9 @@
             <div class="container2">
                 <div class="coolbtn2">
                     <input type="submit" class="submit" name="update" value="Update your info" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
                 </div>
                 <div class="coolbtn2">
                     <input type="button" class="submit" name="calendar" value="Calendar" />
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
                 </div>
             </div>
         </div>
@@ -76,8 +68,36 @@
             </form>
         </div>
         <div id="calendar-container" class="hidden">
-            <div id='calendar' ></div>
-        </div>  
+            <div id="calendar-event" class="form-box hidden">
+                <form id="setevent">
+
+                    <div class="user-box">
+                        <input type="text" id="memo" placeholder="write your memo !" />
+                    </div>
+                    <div class="user-box">
+                        <p>Start date</p>
+                        <input type="datetime-local" id="startdate" />
+                    </div>
+                    <div class="user-box">
+                        <p>End date</p>
+                        <input type="datetime-local" id="enddate" />
+                    </div>
+
+                    <div class="container">
+                        <div class="coolbtn2">
+                            <input type="submit" class="submit" name="update" value="SET MEMO!" />
+                        </div>
+
+                        <div class="container">
+                            <div class="coolbtn2">
+                                <input type="submit" class="submit" name="back" value="GO BACK!" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="calendar"></div>
+        </div>
     </main>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -85,6 +105,7 @@
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/moment@5.10.0/main.global.min.js"></script> -->
     <script type="module" src="./js/profileScript.js"></script>
     <script src="./js/calendar.js"></script>
 </body>

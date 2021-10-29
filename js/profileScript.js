@@ -99,3 +99,18 @@ logout.addEventListener('click', function (el) {
   sessionStorage.removeItem('login');
   location.href = 'index.html'
 })
+
+/*================ 
+    calendar form
+==================*/
+
+let memoForm = id(document, '#calendar-event'),
+   backButton = memoForm.querySelector('input[name="back"]');
+   backButton.addEventListener('click', function(e){
+     e.preventDefault()
+    memoForm.classList.toggle('hidden')
+   })
+   memoForm.addEventListener('submit',function(evn){
+    evn.preventDefault();
+   })
+

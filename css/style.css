@@ -3,6 +3,7 @@
     --clr-secondary: #243b55;
     --clr-accent: #03e9f4;
     --clr-txt: #fff;
+    --clr-event: hsla(219, 41%, 13%, 0.7);
 }
 
 /*===========
@@ -59,11 +60,24 @@ main {
 #calendar-container{
     margin-top: 100px;
     width: 100%;
-    max-width: 90%;
     padding: 2%;
     background-color: #fff;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 5);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
     border-radius: 10px;
+}
+
+#calendar-event {
+    position: absolute;
+    z-index: 100;
+    inset: 5%;
+    width: 90%;
+    background-color: var(--clr-event);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+#calendar-event input::placeholder {
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .form-box .container a{

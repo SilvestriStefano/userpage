@@ -7,6 +7,7 @@ export class User {
         this.password = userObj.password;
         this.dob = userObj.dob;
         this.phone = userObj.phone;
+        this.events= userObj.events;
     };
     set updateLstNm(lastName) {
         this.lastName = lastName;
