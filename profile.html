@@ -14,12 +14,12 @@
 <body>
 
     <main>
-        <div class="form-box" id="welcome">
+        <div class="form-box" id="profile">
             <div class="container">
                 <h2>Welcome</h2>
                 <a href="">Log Out</a>
             </div>
-            <div class="user-data"></div>
+            <div id="user-data"></div>
             <div class="container2">
                 <div class="coolbtn2">
                     <input type="submit" class="submit" name="update" value="Update your info" />
@@ -72,17 +72,12 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <div class="coolbtn">
-                        <input type="button" class="submit" name="logout" value="Log Out" />
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
                 </div>
             </form>
         </div>
-        <div id='calendar' class="hidden"></div>
+        <div id="calendar-container" class="hidden">
+            <div id='calendar' ></div>
+        </div>  
     </main>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -91,6 +86,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.js"></script>
     <script type="module" src="./js/profileScript.js"></script>
+    <script src="./js/calendar.js"></script>
 </body>
 
 </html>
