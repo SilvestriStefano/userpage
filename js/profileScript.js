@@ -18,7 +18,7 @@ function dataUpdate() {
   let userData = id(welcome, '#user-data')
   userData.innerHTML = ''
   for (const prop in tempUser) {
-    if (prop != 'password' && tempUser[prop] != '') {
+    if (prop != 'password' && prop != 'events' && tempUser[prop] != '') {
       let userInfo = document.createElement('div')
       userInfo.innerText = tempUser[prop]
       userInfo.classList.add('info')
@@ -32,14 +32,14 @@ updateButton.addEventListener('click', eve => {
   // welcome.classList.toggle('hidden');
   updateForm.parentNode.classList.toggle('hidden');
   let tempUser = JSON.parse(sessionStorage.getItem('login'));
-  
+
   id(updateForm, "#updateUsername").value = tempUser.userName;
   id(updateForm, "#updateName").value = tempUser.name;
   id(updateForm, "#updateLastname").value = tempUser.lastName;
   id(updateForm, "#updateEmail").value = tempUser.email;
   id(updateForm, '#updateDob').value = tempUser.dob;
   id(updateForm, '#updatePhone').value = tempUser.phone;
-  
+
   id(updateForm, '#updateEmail').disabled = true;
 })
 
@@ -105,12 +105,31 @@ logout.addEventListener('click', function (el) {
 ==================*/
 
 let memoForm = id(document, '#calendar-event'),
-   backButton = memoForm.querySelector('input[name="back"]');
-   backButton.addEventListener('click', function(e){
-     e.preventDefault()
-    memoForm.classList.toggle('hidden')
-   })
-   memoForm.addEventListener('submit',function(evn){
-    evn.preventDefault();
-   })
+  backButton = memoForm.querySelector('input[name="back"]');
+backButton.addEventListener('click', function (e) {
+  e.preventDefault()
+  memoForm.classList.toggle('hidden')
+})
+memoForm.addEventListener('submit', function (evn) {
+  evn.preventDefault();
+  if (evn.submitter.name == "update") {
+    
+    memoForm.classList.toggle('hidden');
+  } else {
+    let userLog = JSON.parse(sessionStorage.getItem('login'));
+    /*create event*/
+    let eventNew = {
+      id: userLog.length-1||0,
+      title: id(memoForm, '#memo').value,
+      start: id(memoForm, '#startdate').value,
+      end: id(memoForm, '#enddate').value
+    };
+    /*update the sessionStorage*/
+    userLog.events.push(eventNew);
+    sessionStorage.setItem('login', JSON.stringify(userLog));
 
+    /*add to the calendar*/
+    calendar.addEvent(eventNew)
+    memoForm.classList.toggle('hidden')
+  }
+})
