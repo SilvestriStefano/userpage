@@ -80,7 +80,7 @@ main {
     color: rgba(255, 255, 255, 0.65);
 }
 
-.form-box .container a{
+.card-box .container a{
     text-decoration:none;
     color:#f00;
     line-height: 1.6em;
@@ -97,8 +97,12 @@ input:required+span::after{
     font-size: 0.7em;
     color:#f00;
 }
+input.wrong::placeholder {
+    font-style:italic;
+    color:#f00;
+}
 
-.form-box {
+.card-box {
     width: 400px;
     padding: 40px;
     background: rgba(0, 0, 0, 5);
@@ -108,18 +112,18 @@ input:required+span::after{
     color:var(--clr-txt);
 }
 
-.form-box h2 {
+.card-box h2 {
     margin: 0 0 30px;
     padding: 0;
     color: var(--clr-txt);
     text-align: center;
 }
 
-.form-box .user-box {
+.card-box .user-box {
     position: relative;
 }
 
-.form-box .user-box input {
+.card-box .user-box input {
     width: 100%;
     outline: none;
     margin-bottom: 30px;
@@ -130,11 +134,11 @@ input:required+span::after{
     color: var(--clr-txt);
     background: transparent;
 }
-.form-box .user-box p{
+.card-box .user-box p{
     color: var(--clr-accent);
     font-size: 12px;
 }
-.form-box .user-box label {
+.card-box .user-box label {
     position: absolute;
     top: 0;
     left: 0;
@@ -145,14 +149,14 @@ input:required+span::after{
     transition: 1s;
 }
 
-.form-box .user-box input:focus~label,.form-box .user-box input:required:valid~label{
+.card-box .user-box input:focus~label,.card-box .user-box input:required:valid~label{
     top: -20px;
     left: 0;
     color: var(--clr-accent);
     font-size: 12px;
 }
 
-.form-box .user-box label.bob{
+.card-box .user-box label.bob{
     top: -20px;
     left: 0;
     color: var(--clr-accent);
