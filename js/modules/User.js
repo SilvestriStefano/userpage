@@ -32,7 +32,32 @@ export class User {
 
 };
 
-export function getUser(index){
+export function getUserIndexInLocal(username,password) {
+    let arr = JSON.parse(localStorage.getItem('users')) || [];
+    let i=-1;
+    arr.forEach((element,index) => {
+        if ((element.userName === username || element.email === username) && element.password===password) {
+            i=index
+        }
+    })
+    return i
+}
+
+export function getUserFromLocal(index){
     let arr = JSON.parse(localStorage.getItem('users'));
     return arr[index];
-}
+};
+export function getUserFromSession(){
+    return JSON.parse(sessionStorage.getItem('login'));
+};
+
+export function getUserEvents() {
+    return JSON.parse(sessionStorage.getItem('login')).events;
+};
+
+export function updateLocal() {
+  /*used to update the localStorage */
+  let currentUser = new User(getUserFromSession());
+  let index = getUserIndexInLocal(currentUser.email, currentUser.password);
+  currentUser.update(index);
+};
