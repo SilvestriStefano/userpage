@@ -1,6 +1,5 @@
 import {
-  User,
-  getUser
+  User
 } from "./modules/User.js"
 import {
   getIndex
@@ -27,9 +26,17 @@ function dataUpdate() {
   }
 }
 
+function updateLocal() {
+  let tempUser = JSON.parse(sessionStorage.getItem('login'));
+  let currentUser = new User(tempUser);
+
+  let index = getIndex(currentUser.email, currentUser.password);
+  currentUser.update(index);
+}
+
+
 updateButton.addEventListener('click', eve => {
   eve.preventDefault();
-  // welcome.classList.toggle('hidden');
   updateForm.parentNode.classList.toggle('hidden');
   let tempUser = JSON.parse(sessionStorage.getItem('login'));
 
@@ -84,11 +91,6 @@ updateForm.addEventListener('submit', function (e) {
       currentUser.update(submitIndex);
       sessionStorage.setItem('login', JSON.stringify(currentUser))
       dataUpdate()
-      /*
-      updateForm.parentNode.classList.toggle('hidden');
-      updateForm.reset();
-      sessionStorage.removeItem('login');
-      */
     }
   });
 });
@@ -109,17 +111,38 @@ let memoForm = id(document, '#calendar-event'),
 backButton.addEventListener('click', function (e) {
   e.preventDefault()
   memoForm.classList.toggle('hidden')
+  document.querySelector('#setevent').reset();
 })
 memoForm.addEventListener('submit', function (evn) {
   evn.preventDefault();
   if (evn.submitter.name == "update") {
-    
+    let userLog = JSON.parse(sessionStorage.getItem('login'));
+
+    let eventUpdate = {
+      id: eventID,
+      title: id(memoForm, '#memo').value,
+      start: id(memoForm, '#startdate').value,
+      end: id(memoForm, '#enddate').value
+    };
+
+    userLog.events[userLog.events.findIndex(e=>e.id==eventID)] = eventUpdate;
+
+    sessionStorage.setItem('login', JSON.stringify(userLog));
     memoForm.classList.toggle('hidden');
+
+    calendar.getEventById(eventID).remove();
+    calendar.addEvent(eventUpdate);
   } else {
     let userLog = JSON.parse(sessionStorage.getItem('login'));
     /*create event*/
+    let tempID = userLog.events.length
+    userLog.events.forEach( el => {
+      if(el.id == tempID) {
+        tempID++;
+      } 
+    });
     let eventNew = {
-      id: userLog.length-1||0,
+      id: tempID,
       title: id(memoForm, '#memo').value,
       start: id(memoForm, '#startdate').value,
       end: id(memoForm, '#enddate').value
@@ -132,4 +155,92 @@ memoForm.addEventListener('submit', function (evn) {
     calendar.addEvent(eventNew)
     memoForm.classList.toggle('hidden')
   }
+  updateLocal();
+  document.querySelector('#setevent').reset();
+});
+
+memoForm.querySelector('input[name="delete"]').addEventListener('click', evn => {
+  evn.preventDefault();
+  calendar.getEventById(eventID).remove();
+  memoForm.classList.toggle('hidden');
+
+  let userLog = JSON.parse(sessionStorage.getItem('login'));
+  userLog.events = userLog.events.filter( el => el.id != eventID);
+  sessionStorage.setItem('login', JSON.stringify(userLog));
+  updateLocal();
+  document.querySelector('#setevent').reset();
 })
+
+/*================ 
+    Calendar
+==================*/
+
+let btnCalendar = document.querySelector('input[name="calendar"]')
+let calendarEl = document.querySelector('#calendar');
+let displayMemo = document.querySelector('#calendar-event')
+
+
+btnCalendar.addEventListener('click', function () {
+    calendarEl.parentElement.classList.toggle('hidden')
+    calendar.render();
+})
+
+function getUserEvents(){
+    return JSON.parse(sessionStorage.getItem('login')).events;
+}
+
+var eventID;
+
+let calendar = new FullCalendar.Calendar(calendarEl, {
+    selectable: true,
+    editable:true,
+    //editable: false,
+    initialView: 'dayGridMonth',
+    initialDate: moment().format("YYYY-MM-DD"),
+    headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    eventClick: function(info) {
+        displayMemo.classList.remove('hidden');
+        let title = displayMemo.querySelector('#memo');
+        let startDate = displayMemo.querySelector('#startdate');
+        let endDate = displayMemo.querySelector('#enddate');
+        displayMemo.querySelector('input[name="set"]').parentElement.classList.add('hidden');
+        displayMemo.querySelector('input[name="update"]').parentElement.classList.remove('hidden');
+        displayMemo.querySelector('input[name="delete"]').parentElement.classList.remove('hidden');
+
+        eventID = 1* info.event.id;
+        console.log(eventID);
+        
+        title.value = info.event.title;
+        startDate.value =moment(info.event.start).format('YYYY-MM-DDTHH:mm');
+        endDate.value = moment(info.event.end).format('YYYY-MM-DDTHH:mm');
+
+    },
+    select: function (info) {
+        displayMemo.classList.remove('hidden');
+        let startDate = displayMemo.querySelector('#startdate');
+        let endDate = displayMemo.querySelector('#enddate');
+        displayMemo.querySelector('input[name="set"]').parentElement.classList.remove('hidden');
+        displayMemo.querySelector('input[name="update"]').parentElement.classList.add('hidden');
+        displayMemo.querySelector('input[name="delete"]').parentElement.classList.add('hidden');
+        
+        startDate.value = moment(info.startStr).format('YYYY-MM-DDTHH:mm') ;
+        endDate.value = moment(info.endStr).subtract(1, 'seconds').format('YYYY-MM-DDTHH:mm');
+    },
+    eventDrop: function(info){
+        let userLog = JSON.parse(sessionStorage.getItem('login'));
+        
+        let tempID2 = userLog.events.findIndex(e=>e.id==info.event.id);
+
+        userLog.events[tempID2].start = info.event.start
+        userLog.events[tempID2].end = info.event.end
+
+        sessionStorage.setItem('login', JSON.stringify(userLog));
+        updateLocal();
+    },
+    events:  getUserEvents(),
+    
+});
